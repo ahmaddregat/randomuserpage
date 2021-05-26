@@ -1,7 +1,6 @@
-
 class Renderer {
     constructor() {
-        
+
         $(".friends-container").empty()
         $(".pokemon-container").empty()
         $(".meat-container").empty()
@@ -29,8 +28,8 @@ class Renderer {
     putFriends() {
         const friends = m.data.users.friends
         const source = $("#friends-template").html()
-        const template = Handlebars.compile(source)
-        const newHTML = template({friends})
+        const template = Handlebars.compile({ source })
+        const newHTML = template({ friends })
 
         this.fri_container.append(newHTML)
     }
@@ -40,10 +39,10 @@ class Renderer {
         <div id="textFavorite">Favarite quote :</div>
         <p>${m.data.quote}</p>
         `)
-        
+
     }
 
-    putPoky(){
+    putPoky() {
         this.poke_container.append(`
         <img src=${m.data.poke.img}
           id="pokemon-image" alt="" srcset="">
@@ -51,7 +50,7 @@ class Renderer {
         `)
     }
 
-    putMent(){
+    putMent() {
         this.about_container.append(`
         <div class ="meat-text">About me:</div>
         <div class ="meat-text">Favorite Pokemon : ${m.data.aboutMe}</div>
@@ -61,5 +60,3 @@ class Renderer {
 
 
 }
-
-

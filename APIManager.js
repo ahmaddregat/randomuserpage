@@ -9,77 +9,69 @@ class APIManager {
 
     getUsers() {
         const tempdata = this.data
-        $.ajax(
-            {
+        $.ajax({
 
-                method: "GET",
-                url: 'https://randomuser.me/api/?results=7',
-                success: function (data) {
-                    tempdata.users = usersData(data)
-                    console.log("SUCCESS GET USERS DATA")
-                }
-                , error: function (text) {
-                    console.log(text);
-                }
+            method: "GET",
+            url: 'https://randomuser.me/api/?results=7',
+            success: function(data) {
+                tempdata.users = usersData(data)
+                console.log("SUCCESS GET USERS DATA")
+            },
+            error: function(text) {
+                console.log(text);
             }
-        )
+        })
     }
 
     getQuote() {
         const tempdata = this.data
-        $.ajax(
-            {
-                method: "GET",
-                url: 'https://api.kanye.rest/',
-                success: function (data) {
-                    tempdata.quote = data.quote
-                    console.log("SUCCESS GET QUOTE DATA")
-                }
-                , error: function (text) {
-                    console.log(text);
-                }
+        $.ajax({
+            method: "GET",
+            url: 'https://api.kanye.rest/',
+            success: function(data) {
+                tempdata.quote = data.quote
+                console.log("SUCCESS GET QUOTE DATA")
+            },
+            error: function(text) {
+                console.log(text);
             }
-        )
+        })
     }
 
     getPokemon() {
         const tempdata = this.data
         const randomPoky = Math.floor(Math.random() * NUMS_OF_POKEMON) + 1
-        $.ajax(
-            {
-                method: "GET",
-                url: `http://pokeapi.co/api/v2/pokemon/${randomPoky}`,
-                success: function (data) {
-                    tempdata.poke = pokemonData(data)
-                    console.log("SUCCESS GET POKYMON DATA")
-                }
-                , error: function (text) {
-                    console.log(text);
-                }
+        $.ajax({
+            method: "GET",
+            url: `http://pokeapi.co/api/v2/pokemon/${randomPoky}`,
+            success: function(data) {
+                tempdata.poke = pokemonData(data)
+                console.log("SUCCESS GET POKYMON DATA")
+            },
+            error: function(text) {
+                console.log(text);
             }
-        )
+        })
     }
 
     getAbout() {
         const tempdata = this.data
-        $.ajax(
-            {
-                method: "GET",
-                url: `https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1`,
-                success: function (data) {
-                    tempdata.aboutMe = data[0]
-                    console.log("SUCCESS GET ABOUTME DATA")
-                }
-                , error: function (text) {
-                    console.log(text);
-                }
+        $.ajax({
+            method: "GET",
+            url: `https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1`,
+            success: function(data) {
+
+                console.log("SUCCESS GET ABOUTME DATA")
+            },
+            error: function(text) {
+                console.log(text);
             }
-        )
+        })
     }
 
 }
 
-const usersData = function (data) {
+const usersData = function(data) {
 
     const _data = {}
     const arrayOfUsers = []
@@ -105,7 +97,7 @@ const usersData = function (data) {
     return _data
 }
 
-const pokemonData = function (data) {
+const pokemonData = function(data) {
     const poke = {
         name: data.name,
         img: data.sprites.back_default
@@ -114,5 +106,3 @@ const pokemonData = function (data) {
     return poke
 
 }
-
-
